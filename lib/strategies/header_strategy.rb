@@ -11,7 +11,7 @@ module Phenotype
     end
 
     def version 
-      @version ||= @env[header_key]
+      @version ||= env[header_key]
     end
 
     private
