@@ -5,7 +5,7 @@ ruby gem for versioning. Current supports Sinatra and other lightweight rack fra
 Currently, versioning only supports blocks so you'll have to wrap your application like so.
 
 ```ruby
-  app = Phenotype::VersionedApp(strategies: [Phenotype::HeaderStrategy.new, Phenotype::ParamStrategy.new])
+  app = Phenotype::VersionedApp.new(strategies: [Phenotype::HeaderStrategy.new, Phenotype::ParamStrategy.new])
   app.add_version(version: 'v1', default: true) do |env|
     MyApp::V1.new().call(env)
   end
