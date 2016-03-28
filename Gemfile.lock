@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    phenotype (0.0.1)
+    phenotype (0.1.0)
       rack (~> 1.6)
       require_all (~> 1.3)
 
