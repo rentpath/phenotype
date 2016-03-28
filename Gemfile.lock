@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    phentoype (0.0.1)
-      rack
-      require_all
+    phenotype (0.0.1)
+      rack (~> 1.6)
+      require_all (~> 1.3)
 
 GEM
   remote: https://rubygems.org/
@@ -37,7 +37,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  phentoype!
-  pry
-  rake
-  rspec
+  phenotype!
+  pry (~> 0.10)
+  rake (~> 10.5)
+  rspec (~> 3.4)
+
+BUNDLED WITH
+   1.11.2

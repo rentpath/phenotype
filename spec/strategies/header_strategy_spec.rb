@@ -2,17 +2,19 @@ require 'spec_helper'
 
 describe Phenotype::HeaderStrategy do
   describe "#get_version" do
-    context "with the right header" do
+    context "with dynamic header" do
       let(:env) do
         env = Rack::MockRequest.env_for('/foo')
-        env['HTTP_SUE'] = 'v1'
+        env['HTTP_VERSION'] = 'v1'
         env
       end
 
-      subject { described_class.new(header: 'Sue') }
+      subject { described_class.new(header: 'version') }
 
-      it "returns with v1" do
+      it "returns correct version" do
         expect(subject.get_version(env)).to eql("v1")
+        env['HTTP_VERSION'] = 'v2'
+        expect(subject.get_version(env)).to eql("v2")
       end
     end
 

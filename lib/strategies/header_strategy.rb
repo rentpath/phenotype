@@ -1,4 +1,4 @@
-module Phenotype 
+module Phenotype
   class HeaderStrategy
     attr_reader :header, :header_param, :env
     def initialize(header: 'Sue')
@@ -6,12 +6,12 @@ module Phenotype
     end
 
     def get_version(env)
-      @env ||= env 
+      @env = env
       version
     end
 
-    def version 
-      @version ||= env[header_key]
+    def version
+      @version = env[header_key]
     end
 
     private

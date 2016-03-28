@@ -1,3 +1,3 @@
-module Phenotype 
-  VERSION = '0.0.1'
+module Phenotype
+  VERSION = '0.1.0'
 end
