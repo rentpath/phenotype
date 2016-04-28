@@ -1,4 +1,5 @@
-require 'require_all'
-require_rel 'strategies'
 require 'rack'
-require 'versioned_app'
+require 'phenotype/strategies/accept_header_strategy'
+require 'phenotype/strategies/header_strategy'
+require 'phenotype/strategies/param_strategy'
+require 'phenotype/versioned_app'

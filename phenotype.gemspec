@@ -1,4 +1,4 @@
-require './lib/util/version'
+require './lib/phenotype/version'
 
 Gem::Specification.new do |s|
   s.name = 'phenotype'
