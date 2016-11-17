@@ -1,4 +1,3 @@
-require 'rack'
 module Phenotype
   class ParamStrategy
     attr_reader :param

@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.version = Phenotype::VERSION
   s.authors = ['Rentpath']
   s.summary = "phenotype-#{Phenotype::VERSION}"
-  s.description= "versioning gem that works with rails and rack"
-  s.license = "NA"
+  s.description = 'versioning gem that works with rails and rack'
+  s.license = 'NA'
   s.files = Dir['lib/**/*']
   s.rdoc_options = ['--charset=UTF-8']
   s.require_paths = ['lib']

@@ -4,5 +4,5 @@ require 'phenotype'
 require 'rack'
 
 RSpec.configure do |config|
-  config.color = true
+  config.formatter = config.files_to_run.one? ? :documentation : :progress
 end

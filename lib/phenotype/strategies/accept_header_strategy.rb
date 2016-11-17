@@ -2,7 +2,7 @@ module Phenotype
   class AcceptHeaderStrategy
     attr_reader :mime_type
 
-    def initialize(mime_type = "application/vnd.rentpath.api+json")
+    def initialize(mime_type = 'application/vnd.rentpath.api+json')
       @mime_type = mime_type
     end
 
