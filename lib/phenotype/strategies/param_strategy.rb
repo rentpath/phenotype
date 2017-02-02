@@ -6,7 +6,7 @@ module Phenotype
     end
 
     def version(env)
-      Rack::Request.new(env).params[param]
+      Rack::Request.new(env).params[param] || NullStrategy.new
     end
   end
 end

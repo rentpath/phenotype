@@ -26,7 +26,7 @@ describe Phenotype::HeaderStrategy do
       subject { described_class.new(header: 'Sue') }
 
       it 'returns with nil' do
-        expect(subject.version(env)).to be_nil
+        expect(subject.version(env)).to be_kind_of Phenotype::NullStrategy
       end
     end
   end

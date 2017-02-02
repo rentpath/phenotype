@@ -7,7 +7,8 @@ module Phenotype
     end
 
     def version(env)
-      env['HTTP_ACCEPT'].to_s.match(/#{Regexp.quote(mime_type)};version=(?<version>\d+)/) { |match| match[:version] }
+      env['HTTP_ACCEPT'].to_s.match(/#{Regexp.quote(mime_type)};version=(?<version>\d+)/) { |match| match[:version] } ||
+        NullStrategy.new
     end
   end
 end

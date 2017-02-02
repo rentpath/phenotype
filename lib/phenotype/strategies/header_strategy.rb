@@ -6,7 +6,7 @@ module Phenotype
     end
 
     def version(env)
-      env["HTTP_#{header.upcase}"]
+      env["HTTP_#{header.upcase}"] || NullStrategy.new
     end
   end
 end

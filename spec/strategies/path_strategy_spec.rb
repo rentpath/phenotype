@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Phenotype::ParamStrategy do
+describe Phenotype::PathStrategy do
   describe '#version' do
     context 'with a version param' do
       subject { described_class.new }
-      let(:env) { Rack::MockRequest.env_for('/foo?v=v1') }
+      let(:env) { Rack::MockRequest.env_for('/v1/foo') }
 
-      it 'returns with v1' do
-        expect(subject.version(env)).to eql('v1')
+      it 'returns with 1' do
+        expect(subject.version(env)).to eql('1')
       end
     end
 
@@ -15,8 +15,8 @@ describe Phenotype::ParamStrategy do
       subject { described_class.new }
       let(:env) { Rack::MockRequest.env_for('/foo') }
 
-      it 'returns with nil' do
-        expect(subject.version(env)).to be_kind_of Phenotype::NullStrategy
+      it 'returns with null strategy' do
+        expect(subject.version(env)).to be_kind_of(Phenotype::NullStrategy)
       end
     end
   end
