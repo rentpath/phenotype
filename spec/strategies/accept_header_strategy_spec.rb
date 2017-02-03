@@ -24,7 +24,7 @@ describe Phenotype::AcceptHeaderStrategy do
       end
 
       it 'returns nil ' do
-        expect(subject.version(env)).to be_nil
+        expect(subject.version(env)).to be_kind_of Phenotype::NullStrategy
       end
     end
 
@@ -36,7 +36,7 @@ describe Phenotype::AcceptHeaderStrategy do
       end
 
       it 'returns nil ' do
-        expect(subject.version(env)).to be_nil
+        expect(subject.version(env)).to be_kind_of Phenotype::NullStrategy
       end
     end
   end

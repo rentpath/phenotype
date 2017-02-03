@@ -68,7 +68,7 @@ RSpec.describe Phenotype::Versioner do
       end
     end
 
-    context 'Too Many Strategies' do
+    context 'Unknown Version' do
       let(:strategies) { [Phenotype::HeaderStrategy.new(header: 'API_VERSION')] }
       let(:routes) { { 1 => '1', 2 => '2' } }
       let(:env) { { 'HTTP_API_VERSION' => '3' } }
