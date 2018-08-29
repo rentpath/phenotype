@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_development_dependency 'pry', '~> 0.10'
-  s.add_dependency 'rack', '~> 2.0'
+  s.add_dependency 'rack', '~> 1'
   s.add_dependency 'require_all', '~> 1.3'
   s.add_development_dependency 'rake', '~> 10.5'
   s.add_development_dependency 'rspec', '~> 3.4'

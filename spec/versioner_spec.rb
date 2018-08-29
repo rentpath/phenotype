@@ -146,6 +146,32 @@ RSpec.describe Phenotype::Versioner do
           it { is_expected.to eql ok_response }
         end
 
+        context 'with path strategy and cascading' do
+          let(:strategies) { [Phenotype::PathStrategy.new] }
+          let(:routes) do
+            {
+              1 => Phenotype::RouteHandler.new(cascade: false, block: ->(_) { ok_response }),
+              2 => Phenotype::RouteHandler.new(cascade: false, block: ->(_) { ok_response }),
+              3 => Phenotype::RouteHandler.new(cascade: true, block: ->(_) { not_found })
+            }
+          end
+          context 'when not falling back' do
+            let(:env) { {'PATH_INFO' => '/v2/foo'} }
+            it 'does not alter the path' do
+              expect(subject).to eql ok_response
+              expect(env['PATH_INFO']).to eql('/v2/foo')
+            end
+          end
+
+          context 'when falling back' do
+            let(:env) { {'PATH_INFO' => '/v3/foo'} }
+            it 'cascades using an appropriately versioned path' do
+              expect(subject).to eql ok_response
+              expect(env['PATH_INFO']).to eql('/v2/foo')
+            end
+          end
+        end
+
         context 'with 500 response' do
           let(:error_response) { [500, {}, ['error']] }
           let(:routes) do

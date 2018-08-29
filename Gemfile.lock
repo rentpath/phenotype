@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    phenotype (0.4.1)
-      rack (~> 2.0)
+    phenotype (0.4.2)
+      rack (~> 1)
       require_all (~> 1.3)
 
 GEM
@@ -23,7 +23,7 @@ GEM
     pry-byebug (3.6.0)
       byebug (~> 10.0)
       pry (~> 0.10)
-    rack (2.0.4)
+    rack (1.6.10)
     rainbow (3.0.0)
     rake (10.5.0)
     require_all (1.5.0)
@@ -62,4 +62,4 @@ DEPENDENCIES
   rubocop
 
 BUNDLED WITH
-   1.16.0
+   1.16.3
