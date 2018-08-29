@@ -14,7 +14,7 @@ module Phenotype
     def call
       return display_errors if errors?
       cascading_versions.each do |v|
-        if strategies.first.kind_of?(PathStrategy) && version_mismatch?(v)
+        if strategies.first.instance_of?(PathStrategy) && version_mismatch?(v)
           env['PATH_INFO'] = updated_versioned_path(env['PATH_INFO'], v)
         end
         route = call_route(v)
@@ -26,7 +26,7 @@ module Phenotype
     private
 
     def version_mismatch?(version)
-      path_version && path_version != version.to_s
+      path_version && (path_version != version.to_s)
     end
 
     def path_version
