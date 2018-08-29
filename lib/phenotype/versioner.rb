@@ -14,6 +14,9 @@ module Phenotype
     def call
       return display_errors if errors?
       cascading_versions.each do |v|
+        if strategies.first.kind_of?(PathStrategy) && version_mismatch?(v)
+          env['PATH_INFO'] = updated_versioned_path(env['PATH_INFO'], v)
+        end
         route = call_route(v)
         handler = ResponseHandler.new(route.block.call(env))
         return handler.response unless route.cascade? && handler.retry?
@@ -21,6 +24,20 @@ module Phenotype
     end
 
     private
+
+    def version_mismatch?(version)
+      path_version && path_version != version.to_s
+    end
+
+    def path_version
+      path = Rack::Request.new(env).path
+      match = path.match(strategies.first.version_pattern)
+      match.captures.first if match
+    end
+
+    def updated_versioned_path(path, version)
+      path.sub(path_version, version.to_s)
+    end
 
     def errors?
       strategies.empty? || too_many_strategies? || !supported_version?
