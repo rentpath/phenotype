@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'response_handler'
 
 module Phenotype
@@ -11,8 +13,9 @@ module Phenotype
       @env = env
     end
 
-    def call
+    def call # rubocop:disable Metrics/AbcSize
       return display_errors if errors?
+
       cascading_versions.each do |v|
         if strategies.first.instance_of?(PathStrategy) && version_mismatch?(v)
           env['PATH_INFO'] = updated_versioned_path(env['PATH_INFO'], v)
@@ -32,7 +35,7 @@ module Phenotype
     def path_version
       path = Rack::Request.new(env).path
       match = path.match(strategies.first.version_pattern)
-      match.captures.first if match
+      match&.captures&.first
     end
 
     def updated_versioned_path(path, version)

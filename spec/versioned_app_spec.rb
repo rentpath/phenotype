@@ -1,3 +1,15 @@
+# frozen_string_literal: true
+
+class MockStrategy
+  def initialize(version)
+    @version = version
+  end
+
+  def version(_env)
+    @version
+  end
+end
+
 RSpec.describe Phenotype::VersionedApp do
   describe '#add_strategy' do
     context 'with no strategies' do
@@ -31,17 +43,7 @@ RSpec.describe Phenotype::VersionedApp do
   end
 
   describe '#call' do
-    class MockStrategy
-      def initialize(version)
-        @version = version
-      end
-
-      def version(env)
-        @version
-      end
-    end
-
-    let(:env) { {'foo' => 'bar'} }
+    let(:env) { { 'foo' => 'bar' } }
 
     context 'with 0 strategies' do
       subject { described_class.new.call(env).first }

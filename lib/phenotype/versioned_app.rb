@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'versioner'
 require_relative 'route_handler'
 
@@ -16,6 +18,7 @@ module Phenotype
 
     def add_version(version:, cascade: false, &block)
       raise 'Error - Phenotype version must be numeric' unless version.is_a?(Numeric)
+
       routes[version] = RouteHandler.new(cascade: cascade, block: block)
     end
 

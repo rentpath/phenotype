@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Phenotype
   class NullStrategy
-    def version(env)
+    def version(_env)
       self
     end
 

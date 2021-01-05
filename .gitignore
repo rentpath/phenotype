@@ -37,3 +37,4 @@ build/
 
 ## Rubocop generated
 .rubocop-https*
+Gemfile.lock

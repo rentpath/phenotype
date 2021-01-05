@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Phenotype::RouteHandler do
   describe '#cascade?' do
     context 'When true' do
