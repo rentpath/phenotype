@@ -1,7 +1,9 @@
 # Phenotype
-ruby gem for versioning. Current supports Sinatra and other lightweight rack frameworks.
+
+ruby gem for versioning routes. Current supports Sinatra and other lightweight rack frameworks.
 
 ## Versioning an Application
+
 Currently, versioning only supports blocks so you'll have to wrap your application like so.
 
 - Version must be numeric
@@ -16,7 +18,7 @@ Currently, versioning only supports blocks so you'll have to wrap your applicati
   run app
 ```
 
-Note that for Sinatra apps you can create a cascading API using `use` in a Sinatra base
+**Note** for Sinatra apps you can create a cascading API using `use` in a Sinatra base
 
 ```ruby
 class V2 < Sinatra::Base
@@ -30,6 +32,7 @@ end
 ```
 
 ## Creating a Versioning Strategy
+
 A strategy is a class that has two methods.
 
 1. `get_version(env)` which takes a rack environment variable and returns a string of the version.

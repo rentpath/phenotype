@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'ostruct'
 
-RSpec.describe Phenotype::Versioner do
-  class MockStrategy
-    def initialize(version)
-      @version = version
-    end
-
-    def version(env)
-      @version
-    end
+class MockStrategy
+  def initialize(version)
+    @version = version
   end
 
+  def version(_env)
+    @version
+  end
+end
+
+RSpec.describe Phenotype::Versioner do
   let(:routes) { {} }
   let(:strategies) { [] }
   let(:env) { {} }
@@ -45,7 +47,7 @@ RSpec.describe Phenotype::Versioner do
     context 'No Strategies' do
       subject { versioner.send(:display_errors) }
       it 'return 406' do
-        expect(subject).to eql([406, {'Content-Type' => 'text/html'}, ['No Strategies provided']])
+        expect(subject).to eql([406, { 'Content-Type' => 'text/html' }, ['No Strategies provided']])
       end
 
       it 'has errors' do
@@ -59,7 +61,7 @@ RSpec.describe Phenotype::Versioner do
 
       it 'return 400' do
         expect(subject).to(
-          eql([400, {'Content-Type' => 'text/html'}, ['Too mant strategies provided, Supports only one']])
+          eql([400, { 'Content-Type' => 'text/html' }, ['Too mant strategies provided, Supports only one']])
         )
       end
 
@@ -156,7 +158,7 @@ RSpec.describe Phenotype::Versioner do
             }
           end
           context 'when not falling back' do
-            let(:env) { {'PATH_INFO' => '/v2/foo'} }
+            let(:env) { { 'PATH_INFO' => '/v2/foo' } }
             it 'does not alter the path' do
               expect(subject).to eql ok_response
               expect(env['PATH_INFO']).to eql('/v2/foo')
@@ -164,7 +166,7 @@ RSpec.describe Phenotype::Versioner do
           end
 
           context 'when falling back' do
-            let(:env) { {'PATH_INFO' => '/v3/foo'} }
+            let(:env) { { 'PATH_INFO' => '/v3/foo' } }
             it 'cascades using an appropriately versioned path' do
               expect(subject).to eql ok_response
               expect(env['PATH_INFO']).to eql('/v2/foo')

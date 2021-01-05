@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Phenotype
   class PathStrategy
     attr_reader :version_pattern

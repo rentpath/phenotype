@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Phenotype
   class AcceptHeaderStrategy
     attr_reader :mime_type

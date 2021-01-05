@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module Phenotype
   class HeaderStrategy
     attr_reader :header
+
     def initialize(header: 'Sue')
       @header = header
     end

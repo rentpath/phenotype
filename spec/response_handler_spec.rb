@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Phenotype::ResponseHandler do
   let(:response) { [200, { 'Content-Type' => 'text/html' }, ['sucess']] }
   let(:handler) { described_class.new(response) }
@@ -29,7 +31,7 @@ RSpec.describe Phenotype::ResponseHandler do
     end
 
     context '404' do
-      let(:response) { [200, { }, ['sucess']] }
+      let(:response) { [200, {}, ['sucess']] }
       subject { handler.retry? }
 
       it { is_expected.to be_falsey }
